@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Bell, ChevronDown, Search } from "lucide-react";
 
+import { layoutStyles } from "../../styles/layoutStyles.js";
 import type { HeaderProps } from "../../types/layout.js";
 
 export default function Header({
@@ -14,32 +15,32 @@ export default function Header({
   onProfileClick,
 }: HeaderProps) {
   return (
-    <header className="zs-header">
-      <div className="zs-header-search">
-        <Search size={14} className="zs-header-search-icon" />
+    <header style={layoutStyles.header}>
+      <div style={layoutStyles.headerSearch}>
+        <Search size={14} color="#428bb1" />
         <input
           type="text"
           placeholder={searchPlaceholder}
-          className="zs-header-search-input"
+          style={layoutStyles.headerSearchInput}
           onChange={(event) => onSearchChange?.(event.target.value)}
         />
       </div>
 
-      <div className="zs-header-actions">
+      <div style={layoutStyles.headerActions}>
         <button
           type="button"
           aria-label="Notifications"
-          className="zs-header-icon-button"
+          style={layoutStyles.headerIconButton}
           onClick={onNotificationClick}
         >
           <Bell size={18} />
         </button>
 
-        <div className="zs-header-divider" />
+        <div style={layoutStyles.headerDivider} />
 
         <button
           type="button"
-          className="zs-header-profile-button"
+          style={layoutStyles.headerProfileButton}
           onClick={onProfileClick}
         >
           <Image
@@ -47,10 +48,10 @@ export default function Header({
             alt="User profile"
             width={28}
             height={28}
-            className="zs-header-profile-image"
+            style={layoutStyles.headerProfileImage}
           />
-          <span className="zs-header-profile-name">{userName}</span>
-          <ChevronDown size={16} className="zs-header-profile-chevron" />
+          <span style={layoutStyles.headerProfileName}>{userName}</span>
+          <ChevronDown size={16} color="#64748b" />
         </button>
       </div>
     </header>

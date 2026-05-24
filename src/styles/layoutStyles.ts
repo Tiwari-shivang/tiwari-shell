@@ -1,0 +1,166 @@
+import type { CSSProperties } from "react";
+
+const SIDEBAR_WIDTH = 98;
+const HEADER_HEIGHT = 70;
+const BORDER_COLOR = "#bdddeb";
+
+const baseSidebarItem: CSSProperties = {
+  display: "flex",
+  height: 71,
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "0.3rem",
+  textAlign: "center",
+  textDecoration: "none",
+};
+
+export const layoutStyles: Record<string, CSSProperties> = {
+  root: {
+    minHeight: "100vh",
+    background: "#f8fcff",
+  },
+  header: {
+    position: "fixed",
+    right: 0,
+    top: 0,
+    zIndex: 20,
+    display: "flex",
+    height: HEADER_HEIGHT,
+    width: `calc(100% - ${SIDEBAR_WIDTH}px)`,
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottom: `0.5px solid ${BORDER_COLOR}`,
+    background: "#fff",
+    padding: "0 16px",
+  },
+  headerSearch: {
+    display: "flex",
+    height: 28,
+    width: "min(354px, 48vw)",
+    alignItems: "center",
+    gap: 4,
+    border: "1px solid rgb(66 139 177 / 50%)",
+    borderRadius: 999,
+    background: "#fff",
+    padding: "4px 8px",
+  },
+  headerSearchInput: {
+    width: "100%",
+    border: 0,
+    outline: "none",
+    background: "transparent",
+    color: "#0f172a",
+    fontSize: 14,
+  },
+  headerActions: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+  },
+  headerIconButton: {
+    display: "inline-flex",
+    height: 32,
+    width: 32,
+    alignItems: "center",
+    justifyContent: "center",
+    border: 0,
+    borderRadius: 999,
+    background: "transparent",
+    color: "#1e293b",
+    cursor: "pointer",
+  },
+  headerDivider: {
+    height: 24,
+    width: 1,
+    background: "#d1d5db",
+  },
+  headerProfileButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    border: 0,
+    borderRadius: 999,
+    padding: 4,
+    background: "transparent",
+    cursor: "pointer",
+  },
+  headerProfileImage: {
+    borderRadius: 999,
+  },
+  headerProfileName: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: 500,
+  },
+  sidebar: {
+    position: "fixed",
+    left: 0,
+    top: 0,
+    zIndex: 30,
+    height: "100vh",
+    width: SIDEBAR_WIDTH,
+    borderRight: `0.5px solid ${BORDER_COLOR}`,
+    background: "#f2f9fc",
+    boxShadow: "0 0 4px 0 rgb(0 0 0 / 8%)",
+  },
+  sidebarLogoWrap: {
+    display: "flex",
+    height: HEADER_HEIGHT,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sidebarLogoPill: {
+    display: "flex",
+    height: 38,
+    width: 38,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "8.769px",
+    background: "linear-gradient(135deg, #0094da 0%, #33b3f0 100%)",
+  },
+  sidebarBody: {
+    height: `calc(100% - ${HEADER_HEIGHT}px)`,
+  },
+  sidebarNav: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 4,
+    padding: "4px 8px",
+  },
+  sidebarItemDefault: {
+    ...baseSidebarItem,
+    borderRadius: 6,
+    padding: "6px 0",
+    boxShadow: "0 0 4px 0 rgb(169 214 255 / 8%)",
+  },
+  sidebarItemSelected: {
+    ...baseSidebarItem,
+    border: `1px solid ${BORDER_COLOR}`,
+    borderRadius: 8,
+    background: "#fff",
+    padding: "8px 0",
+    boxShadow: "0 0 4px 0 rgb(0 0 0 / 12%)",
+  },
+  sidebarItemDisabled: {
+    cursor: "not-allowed",
+    opacity: 0.6,
+  },
+  sidebarItemLabel: {
+    color: "#01334d",
+    fontSize: 10,
+    fontWeight: 400,
+    lineHeight: "12px",
+  },
+  sidebarItemLabelActive: {
+    color: "#0284b5",
+    fontSize: 10,
+    fontWeight: 700,
+    lineHeight: "12px",
+  },
+  content: {
+    marginLeft: SIDEBAR_WIDTH,
+    paddingTop: HEADER_HEIGHT,
+    minHeight: "100vh",
+  },
+};

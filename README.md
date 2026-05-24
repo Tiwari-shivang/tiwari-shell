@@ -10,16 +10,7 @@ npm install tiwari-shell
 
 ## Use in Next.js
 
-Import the package stylesheet once at your app entry:
-
-- App Router: `app/layout.tsx`
-- Pages Router: `pages/_app.tsx`
-
-```tsx
-import "tiwari-shell/styles.css";
-```
-
-Then use components:
+Use components directly (no separate CSS import required):
 
 ```tsx
 import { AppLayout } from "tiwari-shell";
@@ -48,4 +39,5 @@ export default function Page() {
 ## Notes
 
 - The package entry is client-compatible for Next.js component-library usage.
-- Styles are intentionally exported as `tiwari-shell/styles.css` for explicit control in consuming apps.
+- Styles are inlined in components, so consumer apps do not need to import package CSS.
+- Use root-relative paths in `sidebar.navItems[].href` (for example `"/dashboard"`) to keep client-side SPA navigation. External URLs intentionally trigger full navigation.
