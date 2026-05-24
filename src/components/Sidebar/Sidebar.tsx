@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { layoutStyles } from "../../styles/layoutStyles.js";
 import { useSidebarSelection } from "../../hooks/useSidebarSelection.js";
 import type { SidebarNavItem, SidebarProps } from "../../types/layout.js";
+import Link from "next/link.js";
 
 const PROTOCOL_REGEX = /^[a-zA-Z][a-zA-Z\d+.-]*:/;
 
@@ -97,19 +98,13 @@ function SidebarItem({
 
   const resolved = resolveHref(item.href);
   return (
-    <a
-      href={resolved.href}
+    <Link
+      href={item.href}
       style={itemStyle}
-      onClick={(event) => {
-        if (resolved.isExternal) {
-          return;
-        }
-        handleInternalNavigation(event, resolved, navigate);
-      }}
     >
       <Image src={iconSrc} alt={item.label} width={20} height={20} />
       <span style={textStyle}>{item.label}</span>
-    </a>
+    </Link>
   );
 }
 
