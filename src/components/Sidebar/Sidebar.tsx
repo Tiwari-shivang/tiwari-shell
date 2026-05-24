@@ -3,8 +3,44 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useSidebarSelection } from "../../hooks/useSidebarSelection";
-import type { SidebarNavItem, SidebarProps } from "../../types/layout";
+import { useSidebarSelection } from "../../hooks/useSidebarSelection.js";
+import type { SidebarNavItem, SidebarProps } from "../../types/layout.js";
+
+const PROTOCOL_REGEX = /^[a-zA-Z][a-zA-Z\d+.-]*:/;
+
+function resolveHref(href: string): { href: string; isExternal: boolean } {
+  if (href.startsWith("//")) {
+    return { href, isExternal: true };
+  }
+
+  if (PROTOCOL_REGEX.test(href)) {
+    if (
+      (href.startsWith("http://") || href.startsWith("https://")) &&
+      typeof window !== "undefined"
+    ) {
+      try {
+        const url = new URL(href, window.location.origin);
+
+        if (url.origin === window.location.origin) {
+          return {
+            href: `${url.pathname}${url.search}${url.hash}`,
+            isExternal: false,
+          };
+        }
+      } catch {
+        return { href, isExternal: true };
+      }
+    }
+
+    return { href, isExternal: true };
+  }
+
+  if (href.startsWith("/") || href.startsWith("#") || href.startsWith("?")) {
+    return { href, isExternal: false };
+  }
+
+  return { href: `/${href}`, isExternal: false };
+}
 
 function SidebarItem({
   item,
@@ -35,8 +71,19 @@ function SidebarItem({
     );
   }
 
+  const resolved = resolveHref(item.href);
+
+  if (resolved.isExternal) {
+    return (
+      <a href={resolved.href} className={className}>
+        <Image src={iconSrc} alt={item.label} width={20} height={20} />
+        <span className={textClassName}>{item.label}</span>
+      </a>
+    );
+  }
+
   return (
-    <Link href={item.href} className={className}>
+    <Link href={resolved.href} className={className}>
       <Image src={iconSrc} alt={item.label} width={20} height={20} />
       <span className={textClassName}>{item.label}</span>
     </Link>

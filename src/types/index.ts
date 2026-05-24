@@ -4,4 +4,4 @@ export type {
   ImageSource,
   SidebarNavItem,
   SidebarProps,
-} from "./layout";
+} from "./layout.js";

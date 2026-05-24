@@ -1,1 +1,1 @@
-export { useSidebarSelection } from "./useSidebarSelection";
+export { useSidebarSelection } from "./useSidebarSelection.js";

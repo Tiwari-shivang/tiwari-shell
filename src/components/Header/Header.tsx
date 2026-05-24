@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Bell, ChevronDown, Search } from "lucide-react";
 
-import type { HeaderProps } from "../../types/layout";
+import type { HeaderProps } from "../../types/layout.js";
 
 export default function Header({
   userName = "User",

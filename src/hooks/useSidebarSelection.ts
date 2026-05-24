@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import type { SidebarNavItem } from "../types/layout";
+import type { SidebarNavItem } from "../types/layout.js";
 
 export function useSidebarSelection(): (item: SidebarNavItem) => boolean {
   const pathname = usePathname();

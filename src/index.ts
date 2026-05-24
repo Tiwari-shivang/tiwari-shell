@@ -1,8 +1,14 @@
-import "./styles/layout.css";
+"use client";
 
-export { Header } from "./components/Header";
-export { Sidebar } from "./components/Sidebar";
-export { AppLayout } from "./components/Layout";
-export { useSidebarSelection } from "./hooks";
+export { Header } from "./components/Header/index.js";
+export { Sidebar } from "./components/Sidebar/index.js";
+export { AppLayout } from "./components/Layout/index.js";
+export { useSidebarSelection } from "./hooks/index.js";
 
-export type { AppLayoutProps, HeaderProps, ImageSource, SidebarNavItem, SidebarProps } from "./types";
+export type {
+  AppLayoutProps,
+  HeaderProps,
+  ImageSource,
+  SidebarNavItem,
+  SidebarProps,
+} from "./types/index.js";
